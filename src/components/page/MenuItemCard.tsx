@@ -7,7 +7,6 @@ interface Props {
 }
 
 function MenuItemCard(props: Props) {
-  console.log(props.menuItem);
   return (
     <div className="col-md-4 col-12 p-4">
       <div

@@ -2,22 +2,28 @@ import React from 'react'
 import { useState, useEffect } from "react";
 import { menuItemModel } from "../../interfaces";
 import MenuItemCard from './MenuItemCard';
+import { setMenuItems } from '../../storage/redux/menuItemsSlice';
+import { useDispatch } from 'react-redux';
+import { useGetMenuItemsQuery } from '../../apis/menuItemApi';
 
 function MenuItemList() {
-    const [menuItems, setMenuItems] = useState<menuItemModel[]>([]);
+    //const [menuItems, setMenuItems] = useState<menuItemModel[]>([]);
+    const dispatch = useDispatch();
+    const {data, isLoading} = useGetMenuItemsQuery(null);
 
     useEffect(() => {
-      fetch("https://localhost:44353/api/menu-items/all")
-        .then((response) => response.json())
-        .then((data) => {
-          console.log(data);
-          setMenuItems(data.data);
-        });
-    }, []);
+      if (!isLoading){
+        dispatch(setMenuItems(data.data));
+      }
+    }, [isLoading]);
+
+  if(isLoading){
+    return (<div>Loaning...</div>)
+  }
   return (
     <div className='container'>
     <div className="row">
-      {menuItems.length > 0 && menuItems.map((menuItem, index) => {
+      {data.data.length > 0 && data.data.map((menuItem: menuItemModel, index: number) => {
         return(<MenuItemCard menuItem={menuItem} key={index} />);
       })}
     </div>
