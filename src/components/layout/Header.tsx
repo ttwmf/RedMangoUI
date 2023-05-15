@@ -1,5 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
 let logo = require("../../assets/images/mango.png");
 
 function Header() {
@@ -7,7 +8,8 @@ function Header() {
     <div>
       <nav className="navbar navbar-expand-lg bg-body-tertiary bg-dark navbar-dark">
         <div className="container-fluid">
-          <img src={logo} alt="" className="m-1" style={{ height: "40px" }} />
+          <NavLink to="/"><img src={logo} alt="" className="m-1" style={{ height: "40px" }} /></NavLink>
+          
           <button
             className="navbar-toggler"
             type="button"
@@ -22,9 +24,14 @@ function Header() {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="#">
+                <NavLink className="nav-link active" aria-current="page" to="/">
                   Home
-                </a>
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink className="nav-link active" aria-current="page" to="/shopping-cart">
+                <i className="bi bi-cart4"></i>
+                </NavLink>
               </li>
               <li className="nav-item dropdown">
                 <a
