@@ -1,4 +1,4 @@
-export default interface Root {
+export default interface menuItemModel {
   name: string
   description: string
   specialTag: string
@@ -6,9 +6,4 @@ export default interface Root {
   price: number
   image: string
   id: number
-  createdAt: string
-  createdBy: string
-  updatedAt: string
-  updatedBy: string
-  status: number
 }

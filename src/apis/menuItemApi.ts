@@ -3,19 +3,19 @@ import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
 const menuItemApi = createApi({
     reducerPath: "menuItemApi",
     baseQuery: fetchBaseQuery({
-        baseUrl: "https://localhost:44353/api/menu-items/",
+        baseUrl: "https://localhost:44353/api/",
     }),
     tagTypes: ["MenuItems"],
     endpoints: (builder) =>({
         getMenuItems: builder.query({
             query: () => ({
-                url: "all"
+                url: "menu-items/all"
             }),
             providesTags: ["MenuItems"]
         }),
         getMenuItemById: builder.query({
             query: (id) => ({
-                url: `${id}`
+                url: `menu-items/${id}`
             }),
             providesTags: ["MenuItems"]
         })

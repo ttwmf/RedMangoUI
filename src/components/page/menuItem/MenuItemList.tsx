@@ -1,10 +1,11 @@
 import React from 'react'
 import { useState, useEffect } from "react";
-import { menuItemModel } from "../../interfaces";
+import { menuItemModel } from "../../../interfaces";
 import MenuItemCard from './MenuItemCard';
-import { setMenuItems } from '../../storage/redux/menuItemsSlice';
+import { setMenuItems } from '../../../storage/redux/menuItemsSlice';
 import { useDispatch } from 'react-redux';
-import { useGetMenuItemsQuery } from '../../apis/menuItemApi';
+import { useGetMenuItemsQuery } from '../../../apis/menuItemApi';
+import { MainLoader } from '../common';
 
 function MenuItemList() {
     //const [menuItems, setMenuItems] = useState<menuItemModel[]>([]);
@@ -18,7 +19,7 @@ function MenuItemList() {
     }, [isLoading]);
 
   if(isLoading){
-    return (<div>Loaning...</div>)
+    return (<MainLoader />)
   }
   return (
     <div className='container'>
