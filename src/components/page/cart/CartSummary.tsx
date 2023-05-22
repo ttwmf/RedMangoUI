@@ -1,5 +1,5 @@
 import React from "react";
-import { cartItemModel } from "../../../interfaces";
+import { cartItemModel, userModel } from "../../../interfaces";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../../storage/redux/store";
 import {
@@ -14,6 +14,8 @@ function CartSummary() {
   const cartItemsFromStore: cartItemModel[] = useSelector(
     (state: RootState) => state.shoppingCartStore.cartItems ?? []
   );
+
+  const userData :userModel = useSelector((state: RootState) => state.useAuthStore);
   if (!cartItemsFromStore) {
     return <div>Shopping Cart Empty</div>;
   }
@@ -31,7 +33,7 @@ function CartSummary() {
       dispatch(updateQuantity({ quantity: newQuantity, id: cartItem.id }));
     }
     addOrUpdateShoppingCart({
-      userId: "0ee50b2d-d2a0-48d3-a51e-7264806f1cf8",
+      userId: userData.id,
       menuItemId: cartItem.menuItem?.id,
       quantity: updateQuantityBy,
     });

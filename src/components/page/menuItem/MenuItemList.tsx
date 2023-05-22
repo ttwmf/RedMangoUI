@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from "react";
-import { menuItemModel } from "../../../interfaces";
+import { apiResponse, menuItemModel } from "../../../interfaces";
 import MenuItemCard from './MenuItemCard';
 import { setMenuItems } from '../../../storage/redux/menuItemsSlice';
 import { useDispatch } from 'react-redux';
@@ -11,7 +11,7 @@ function MenuItemList() {
     //const [menuItems, setMenuItems] = useState<menuItemModel[]>([]);
     const dispatch = useDispatch();
     const {data, isLoading} = useGetMenuItemsQuery(null);
-
+    
     useEffect(() => {
       if (!isLoading){
         dispatch(setMenuItems(data.data));
