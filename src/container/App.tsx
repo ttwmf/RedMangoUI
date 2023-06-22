@@ -15,7 +15,8 @@ function App() {
   const dispatch = useDispatch();
   const userData:userModel = useSelector((state: RootState) => state.useAuthStore);
   const {data, isLoading} = useGetShoppingCartsByUserIdQuery(userData.id);
-
+  console.log(data)
+  console.log(userData)
   useEffect(() => {
     const token = localStorage.getItem("token");
     if(token){

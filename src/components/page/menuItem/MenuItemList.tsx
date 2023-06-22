@@ -17,7 +17,7 @@ function MenuItemList() {
         dispatch(setMenuItems(data.data));
       }
     }, [isLoading]);
-
+    console.log(data);
   if(isLoading){
     return (<MainLoader />)
   }
